@@ -1,7 +1,8 @@
-import { SET_LATEST_NEWS } from "../constants";
+import { SET_LATEST_NEWS, SET_POPULAR_NEWS } from "../constants";
 
 const INITIAL_STATE = {
   latestNews: [],
+  popularNews: [],
 };
 
 export const news = (state = INITIAL_STATE, actions) => {
@@ -9,6 +10,8 @@ export const news = (state = INITIAL_STATE, actions) => {
   switch (type) {
     case SET_LATEST_NEWS:
       return { ...state, latestNews: [...state.latestNews, ...payload] };
+    case SET_POPULAR_NEWS:
+      return { ...state, popularNews: [...state.popularNews, ...payload] };
     default:
       return state;
   }
