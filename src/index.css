@@ -1,34 +1,65 @@
+html,
 body {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 20px;
+}
+
+body {
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(to bottom, #fff4e3, #c7b8f9);
+  background: linear-gradient(to bottom, #5d986c, #7b6c97, #684b9e);
   min-height: 100vh;
-  color: #111;
-}
-
-button {
-  width: 100%;
-  padding: 20px 30px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 16px;
   color: #fff;
-  border: none;
-  background-color: rgba(37, 15, 53, 0.4);
-  cursor: pointer;
 }
 
-button:hover {
-  background-color: rgba(37, 15, 53, 0.6);
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-auto-rows: auto 1fr auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+main {
+  padding: 20px;
+}
+
+main .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+header,
+footer {
+  min-height: 80px;
+}
+
+header {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.5)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+footer {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.5)
+  );
+  text-align: center;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+footer h3 {
+  font-weight: 300;
 }
