@@ -6,6 +6,8 @@ import { GET_LATEST_NEWS } from "../../redux/constants";
 const LatestNews = () => {
   const { latestNews } = useSelector((store) => store?.news || {});
   const { latestNewsError } = useSelector((store) => store?.errors || {});
+  const { isLoading } = useSelector((store) => store?.loaders || {});
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,7 +16,11 @@ const LatestNews = () => {
 
   return (
     <div>
-      <News news={latestNews} error={latestNewsError} title="Latest News" />
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <News news={latestNews} error={latestNewsError} title="Latest News" />
+      )}
     </div>
   );
 };

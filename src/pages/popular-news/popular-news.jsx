@@ -7,6 +7,7 @@ const App = () => {
   const { popularNews } = useSelector((store) => store?.news || {});
   const { popularNewsError } = useSelector((store) => store?.errors || {});
   const dispatch = useDispatch();
+  const { isLoading } = useSelector((store) => store?.loaders || {});
 
   useEffect(() => {
     dispatch({ type: GET_POPULAR_NEWS });
@@ -14,7 +15,15 @@ const App = () => {
 
   return (
     <div>
-      <News news={popularNews} error={popularNewsError} title="Popular News" />
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <News
+          news={popularNews}
+          error={popularNewsError}
+          title="Popular News"
+        />
+      )}
     </div>
   );
 };
