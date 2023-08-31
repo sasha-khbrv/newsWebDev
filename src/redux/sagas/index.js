@@ -1,5 +1,4 @@
-import { takeEvery, put, call, fork, spawn } from "@redux-saga/core/effects";
-import { GET_NEWS } from "../constants";
+import { takeEvery, put, call, fork, all } from "@redux-saga/core/effects";
 import { getLatestNews, getPopularNews } from "../../api";
 import {
   setLatestNews,
@@ -7,6 +6,7 @@ import {
   setPopularNews,
   setPopularNewsErrors,
 } from "../actions/actionCreator";
+import { GET_POPULAR_NEWS, GET_LATEST_NEWS } from "../constants";
 
 export function* handleLatestNews() {
   try {
@@ -26,17 +26,14 @@ export function* handlePopularNews() {
   }
 }
 
-// describes requests' logic, work with api, any async stuff
-export function* handleNews() {
-  yield fork(handleLatestNews);
-  yield fork(handlePopularNews);
-}
-
 // watches for actions
-export function* watchClickSaga() {
-  yield takeEvery(GET_NEWS, handleNews);
+export function* watchPopularSaga() {
+  yield takeEvery(GET_POPULAR_NEWS, handlePopularNews);
+}
+export function* watchLatestrSaga() {
+  yield takeEvery(GET_LATEST_NEWS, handleLatestNews);
 }
 
 export default function* rootSaga() {
-  yield watchClickSaga();
+  yield all([fork(watchPopularSaga), fork(watchLatestrSaga)]);
 }
